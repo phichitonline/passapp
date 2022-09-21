@@ -5,7 +5,7 @@
 พัฒนาด้วย Laravel version 9
 ระบบที่ต้องการบน aaPanel Web server, PHP 8.1, URL rewrite laravel5,
 
-1. ติดตั้งด้วยคำสั่ง git clone https://github.com/phichitonline/passapp-dev.git
+1. ติดตั้งด้วยคำสั่ง git clone https://github.com/phichitonline/passapp.git
 2. ใช้คำสั่ง composer install
 3. สร้างฐานข้อมูล
 4. เปลี่ยนชื่อไฟล์ .env.example ให้เป็น .env ตั้งค่าเชื่อมต่อฐานข้อมูล
