@@ -12,11 +12,6 @@
 5. php artisan key:generate
 6. สร้างตารางข้อมูลด้วยคำสั่ง php artisan migrate
 7. chmod 777 storage folder.
-8. สร้างโฟลเดอร์สำหรับเก็บไฟล์ของโปรแกรมในโฟลเดอร์ public ดังนี้
-    - manual (ไฟล์คู่มือ pdf, documents หรืออื่นๆ)
-    - images/duraimg (ไฟล์ภาพครุภัณฑ์)
-    - images/repair (ไฟล์ภาพประกอบการส่งซ่อม)
-    - images/user (ไฟล์ภาพ profile ผู้ใช้)
 
 - เข้าใช้งานครั้งแรกโดยใช้
 - Username = admin@local.com
