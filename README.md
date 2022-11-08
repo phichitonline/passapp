@@ -19,4 +19,6 @@
 
 ## License
 
+ผู้พัฒนา ณัฐพงศ์ เครือเทศ (Dr.GHOST) LineID:0619921666
+
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
