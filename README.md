@@ -11,7 +11,7 @@
 4. copy ไฟล์ .env.example ให้เป็น .env ตั้งค่าเชื่อมต่อฐานข้อมูล
 5. php artisan key:generate
 6. สร้างตารางข้อมูลด้วยคำสั่ง php artisan migrate
-7. chmod 777 storage folder.
+7. chmod 777 folder ต่อไปนี้ storage, public/images
 
 - เข้าใช้งานครั้งแรกโดยใช้
 - Username = admin@local.com
