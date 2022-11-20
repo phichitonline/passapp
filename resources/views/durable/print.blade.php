@@ -35,6 +35,7 @@
 <div class="card flex-row border-0" style="width: 500px;">
     <div class="card px-2 border-0 text-center mt-2" style="width: 170px;">
         {!! QrCode::size(150)->generate($genqrcode) !!}
+        {{-- {!! DNS1D::getBarcodeHTML('999000'.$data->id, 'CODABAR',2,33,'red') !!} --}}
         ID:{{ $data->id }}
     </div>
     <div class="card-block px-0 mt-3">

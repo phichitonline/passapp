@@ -231,7 +231,10 @@
                         @php $genqrcode = config('app.url')."/search/".$data->id; @endphp
 
                         <div class="row">
-                            <div class="align-self-start mr-3 text-center col-md-4">{!! QrCode::size(150)->generate($genqrcode) !!}<br>ID:{{ $data->id }}</div>
+                            <div class="align-self-start mr-3 text-center col-md-4">
+                                {!! QrCode::size(150)->generate($genqrcode) !!}<br>ID:{{ $data->id }}<br>
+                                {!! DNS1D::getBarcodeHTML('00000'.$data->id, 'CODABAR',2,33,'red') !!}
+                            </div>
                             <div class="media-body col-md-8">
                                 <h2><b>{{ $data->pass_number }}</b></h2>
                                 <h5>วันที่ได้มา : <b>{{ DateThaiFull($data->str_date) }}</b></h5>
@@ -249,9 +252,9 @@
                         <i class="ti-printer mr-2"></i> สำหรับพิมพ์ Sticker
                     </a>
                 </div>
-            </div> --}}
-            <p class="m-t-b-0" style='page-break-after:always'></p>
-@endforeach
+            </div>
+            <p class="m-t-b-0" style='page-break-after:always'></p> --}}
+
             <div class="card">
                 <div class="card-body">
                     <ul class="nav nav-pills mb-4" role="tablist">
@@ -279,6 +282,7 @@
                             </p>
 
                         </div>
+@endforeach
                         <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                             <h4 class="mb-4">ประวัติโอนย้าย</h4>
                             <div class="table-responsive">
