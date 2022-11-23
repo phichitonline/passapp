@@ -106,7 +106,7 @@
                     <br>
                 </div>
                 <div class="table-responsive">
-                    <table id="example1" class="table table-small">
+                    <table id="DataExport" class="table table-small">
                         <thead>
                         <tr>
                             <th>เลขครุภัณฑ์</th>
