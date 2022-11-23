@@ -45,7 +45,7 @@ $(document).ready(function () {
     });
 
     $('#DataExport').DataTable({
-        responsive: true,
+        // responsive: true,
         "pageLength": 10,
 		"dom": "Bfrtip",
 		"buttons": ["excel","print"],
