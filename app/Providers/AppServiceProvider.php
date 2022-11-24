@@ -40,11 +40,13 @@ class AppServiceProvider extends ServiceProvider
             $view->with('count_durable4', Durable::where('status', 4)->count());
             $view->with('count_durable17', Durable::where([
                 ['fasgrp', '=', '17'],
-                ['status', '<>', '9']
+                ['status', '<>', '9'],
+                ['status', '<>', '4']
             ])->count());
             $view->with('count_durable18', Durable::where([
                 ['fasgrp', '=', '18'],
-                ['status', '<>', '9']
+                ['status', '<>', '9'],
+                ['status', '<>', '4']
             ])->count());
             $view->with('repair_status1', Repair::where('repair_status', '=', '1')->count());
             $view->with('repair_status2', Repair::where('repair_status', '=', '2')->count());
