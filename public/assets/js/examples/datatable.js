@@ -48,7 +48,7 @@ $(document).ready(function () {
         // responsive: true,
         "pageLength": 10,
 		"dom": "Bfrtip",
-		"buttons": ["excel","print"],
+		"buttons": ["excel"],
 		"oLanguage": {
 			"sProcessing": "กำลังประมวลผล...",
 			"sLengthMenu": "แสดง _MENU_ รายการต่อหน้า",
