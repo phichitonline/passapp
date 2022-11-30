@@ -54,7 +54,7 @@ $(document).ready(function () {
 			"sLengthMenu": "แสดง _MENU_ รายการต่อหน้า",
 			"sZeroRecords": "ไม่พบข้อมูล",
 			"sInfo": "แสดง _START_ ถึง _END_ จาก _TOTAL_ รายการ",
-			"sInfoEmpty": "แสดง 0 ถึง 0 ของ 0 รายการ",
+			"sInfoEmpty": "ไม่มีข้อมูล",
 			"sInfoFiltered": "(จากทั้งหมด _MAX_ รายการ)",
 			"sSearch": "ค้นหา :",
 			"oPaginate": {
