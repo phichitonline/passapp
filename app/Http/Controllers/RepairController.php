@@ -98,11 +98,24 @@ class RepairController extends Controller
      */
     public function show($id)
     {
-
-        $repairs = Repair::select('repairs.*','durables.*')
-        ->leftJoin('durables', 'repairs.durable_id', '=', 'durables.id')
+        $check_repairs = Repair::select('repairs.*')
         ->where('repairs.id', $id)
         ->get();
+
+        foreach($check_repairs as $data) {
+            $check_durable_id = $data->durable_id;
+        }
+
+        if ($check_durable_id > "99999999") {
+            $repairs = Repair::select('repairs.*')
+            ->where('repairs.id', $id)
+            ->get();
+        } else {
+            $repairs = Repair::select('repairs.*','durables.*')
+            ->leftJoin('durables', 'repairs.durable_id', '=', 'durables.id')
+            ->where('repairs.id', $id)
+            ->get();
+        }
 
         return view('repair.detail', [
             'pagename' => "ข้อมูลส่งซ่อม",

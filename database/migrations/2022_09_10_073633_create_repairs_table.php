@@ -19,6 +19,7 @@ return new class extends Migration
             $table->collation = 'utf8_general_ci';
             $table->id();
             $table->string('durable_id');
+            $table->string('durable_desc')->comment('ข้อมูลพัสดุ');
             $table->dateTime('repair_date')->comment('วันที่ส่งซ่อม');
             $table->string('repair_text')->comment('ปัญหาสาเหตุหรืออาการ');
             $table->string('repair_user')->comment('ผู้ส่งซ่อม');

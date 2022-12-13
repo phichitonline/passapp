@@ -45,6 +45,7 @@
                             <tr>
                                 <th></th>
                                 <th>วันที่ส่งซ่อม</th>
+                                <th>รายการส่งซ่อม</th>
                                 <th>สาเหตุหรืออาการ</th>
                                 <th>ผู้ส่งซ่อม</th>
                                 <th>วันที่รับงาน</th>
@@ -68,6 +69,7 @@
                                     </a>
                                 </td>
                                 <td><a href="{{ route('repair.show', $repair->id) }}">{{ $repair->repair_date }}</a></td>
+                                <td><a href="{{ route('repair.show', $repair->id) }}">{{ $repair->durable_desc }}</a></td>
                                 <td style='white-space: pre-wrap; word-wrap: break-word;'><a href="{{ route('repair.show', $repair->id) }}">{{ $repair->repair_text }}</a></td>
                                 <td>{{ $repair->repair_user }}</td>
                                 <td>{{ $repair->repair_reciev_date }}</td>

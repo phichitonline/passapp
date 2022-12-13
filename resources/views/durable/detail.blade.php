@@ -366,7 +366,7 @@
                         @guest @else {{ Auth::user()->name }}
                         <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
                         <input type="hidden" name="durable_id" value="@foreach ($durable as $data) {{ $data->id }} @endforeach">
-                        <input type="hidden" name="pass_number" value="@foreach ($durable as $data) {{ $data->pass_number }} @endforeach">
+                        <input type="hidden" name="durable_desc" value="@foreach ($durable as $data) {{ $data->pass_number }} {{ $data->pass_name }} {{ $data->model }} @endforeach">
                         <input type="hidden" name="repair_user" value="{{ Auth::user()->name }}">
                         <input type="hidden" name="repair_date" value="{{ date("Y-m-d H:i:s") }}">
                         <input type="hidden" name="repair_status" value="1">
@@ -392,7 +392,7 @@
                 </div>
             </form>
         </div>
-      </div>
+    </div>
 
 
     <script>

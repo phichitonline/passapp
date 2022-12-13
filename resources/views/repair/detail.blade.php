@@ -26,10 +26,14 @@
                         <i class="ti-printer mr-2"></i> พิมพ์
                     </a>
                 @else
-                    @if (Auth::user()->isadmin <= "1")
-                            <a href="{{ route('durable.show', $data->durable_id) }}" class="btn btn-outline-info">
-                                <i class="ti-alert mr-2"></i> ดูประวัติครุภัณฑ์
-                            </a>
+                    @if ($data->durable_id > "99999999")
+                    @else
+                    <a href="{{ route('durable.show', $data->durable_id) }}" class="btn btn-outline-info">
+                        <i class="ti-alert mr-2"></i> ดูประวัติครุภัณฑ์
+                    </a>
+                    @endif
+                    
+                    @if (Auth::user()->isadmin <= "1" OR Auth::user()->isadmin == "4")
                             @if ($data->repair_reciev_date == NULL)
                                 <a class="btn btn-outline-warning" onclick="successConfirm()">
                                     <i class="mr-2" data-feather="tool"></i> ช่างรับซ่อม
@@ -44,6 +48,12 @@
                                 <i class="ti-printer mr-2"></i> พิมพ์
                             </a> --}}
                     @else
+                        @if ($data->repair_reciev_date == NULL)
+                        @else
+                            <a class="btn btn-warning text-white">
+                                <i class="mr-2" data-feather="tool"></i> ช่างรับแล้ว
+                            </a>
+                        @endif
                     @endif
                 @endif
             </div>
@@ -72,6 +82,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="row">
+
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
@@ -101,6 +112,18 @@
                                 </div>
                             </div>
                         </div>
+
+                        @if ($data->durable_id > "99999999")
+
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-between mb-2">
+                                <p class="text-muted mb-0">รายการส่งซ่อม</p>
+                            </div>
+                            <h5>{{ $data->durable_desc }}</h5>
+                        </div>
+
+                        @else
+
                         <div class="col-md-6">
                             <div class="d-flex justify-content-between mb-2">
                                 <p class="text-muted mb-0">ข้อมูลครุภัณฑ์</p>
@@ -179,6 +202,9 @@
                             </ul>
 
                         </div>
+
+                        @endif
+
                     </div>
                 </div>
             </div>

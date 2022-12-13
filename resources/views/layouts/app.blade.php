@@ -507,6 +507,11 @@
                                <span class="nav-link-icon" data-feather="file"></span>
                                 <span>รายงาน</span>
                             </a>
+                            <a @if(request()->segment(1) == 'repairmodal') class="active"
+                                @endif href="#" data-toggle="modal" data-target="#repairModal">
+                               <span class="nav-link-icon" data-feather="tool"></span>
+                                <span>แจ้งซ่อม</span>
+                            </a>
                         </li>
                     </ul>
 
@@ -571,6 +576,64 @@
             <!-- Content -->
             <div class="content">
                 @yield('content')
+
+                <div class="modal fade" tabindex="-1" role="dialog" id="repairModal">
+                    <div class="modal-dialog" role="document" aria-hidden="true">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">แจ้งซ่อม</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="ปิด">
+                            <i class="ti-close"></i>
+                          </button>
+                        </div>
+                        <form class="form form-horizontal" action="{{ route('repair.store') }}" method="POST" enctype="multipart/form-data" id="upload-image">
+                            @csrf
+                            <div class="modal-body">
+                                <h3>แจ้งซ่อมครุภัณฑ์หรือวัสดุที่ไม่มีในทะเบียน</h3>
+                                <p>ระบุชื่อ รุ่น หรือโมเดล ของที่ต้องการซ่อม</p>
+                                <input type="text" name="durable_desc">
+                                <p>ผู้แจ้งซ่อม:
+                                    @guest @else {{ Auth::user()->name }}
+                                    <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
+                                    <input type="hidden" name="durable_id" value="{{ date_timestamp_get(date_create()) }}">
+                                    <input type="hidden" name="repair_user" value="{{ Auth::user()->name }}">
+                                    <input type="hidden" name="repair_date" value="{{ date("Y-m-d H:i:s") }}">
+                                    <input type="hidden" name="repair_status" value="1">
+                                    @endguest
+                                </p>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">ระบุรายละเอียด ปัญหา หรือสาเหตุการส่งซ่อม:</label>
+                                    <textarea class="form-control" id="repair_text" name="repair_text" required></textarea>
+                                </div>
+
+                                <div class="slick-slide-item">
+                                    <img src="" class="img-fluid rounded" alt="" id="showimg1"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">ภาพถ่ายจุดที่ชำรุด:</label>
+                                    <input class="form-control text-red" type="file" name="image" accept="image/*" onchange="loadFile1(event)">
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+                                    <button type="submit" class="btn btn-primary">ส่งซ่อม</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+
+                <script>
+                    var loadFile1 = function(event) {
+                        var showimg1 = document.getElementById('showimg1');
+                        showimg1.src = URL.createObjectURL(event.target.files[0]);
+                        showimg1.onload = function() {
+                            URL.revokeObjectURL(showimg1.src)
+                        }
+                    };
+                </script>
+
             </div>
             <!-- ./ Content -->
 
