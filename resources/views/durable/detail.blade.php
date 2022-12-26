@@ -373,7 +373,7 @@
                         @endguest
                     </p>
                     <div class="form-group">
-                        <label for="message-text" class="col-form-label">ระบุรายละเอียด ปัญหา หรือสาเหตุการส่งซ่อม:</label>
+                        <label for="message-text" class="col-form-label">รายละเอียด ปัญหา หรือสาเหตุการส่งซ่อม:</label>
                         <textarea class="form-control" id="repair_text" name="repair_text" required></textarea>
                     </div>
 

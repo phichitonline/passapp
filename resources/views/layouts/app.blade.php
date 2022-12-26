@@ -590,8 +590,7 @@
                             @csrf
                             <div class="modal-body">
                                 <h3>แจ้งซ่อมครุภัณฑ์หรือวัสดุที่ไม่มีในทะเบียน</h3>
-                                <p>ระบุชื่อ รุ่น หรือโมเดล ของที่ต้องการซ่อม</p>
-                                <input type="text" name="durable_desc">
+
                                 <p>ผู้แจ้งซ่อม:
                                     @guest @else {{ Auth::user()->name }}
                                     <input type="hidden" name="user_name" value="{{ Auth::user()->name }}">
@@ -602,7 +601,10 @@
                                     @endguest
                                 </p>
                                 <div class="form-group">
-                                    <label for="message-text" class="col-form-label">ระบุรายละเอียด ปัญหา หรือสาเหตุการส่งซ่อม:</label>
+                                    <label for="message-text" class="col-form-label">ระบุชื่อ รุ่น หรือโมเดล ของที่ต้องการซ่อม:</label>
+                                    <input type="text" class="form-control" id="durable_desc" name="durable_desc" placeholder="รายการซ่อม">
+                                </div>                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">รายละเอียด ปัญหา หรือสาเหตุการส่งซ่อม:</label>
                                     <textarea class="form-control" id="repair_text" name="repair_text" required></textarea>
                                 </div>
 
