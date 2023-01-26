@@ -278,8 +278,7 @@
                                 ไฟล์เอกสาร<br>
                                 <a target="_blank" href="/manual/{{ $data->manual_file1 }}">{{ $data->manual_file1 }}</a><br>
                                 Youtube video.<br>
-                                <iframe width="560" height="315"
-                                    src="{{ $data->manual_link }}">
+                                <iframe src="{{ $data->manual_link }}">
                                 </iframe>
                                 {{-- <a href="{{ $data->manual_link }}" target="_blank" rel="noopener noreferrer">{{ $data->manual_link }}</a> --}}
                             </p>
