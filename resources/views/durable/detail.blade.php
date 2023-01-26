@@ -278,7 +278,7 @@
                                 คู่มือการใช้งาน<br>
                                 <a target="_blank" href="/manual/{{ $data->manual_file1 }}">{{ $data->manual_file1 }}</a><br>
                                 ลิงก์อื่นๆ<br>
-                                <iframe width="420" height="345"
+                                <iframe width="560" height="315"
                                     src="{{ $data->manual_link }}">
                                 </iframe>
                                 {{-- <a href="{{ $data->manual_link }}" target="_blank" rel="noopener noreferrer">{{ $data->manual_link }}</a> --}}
