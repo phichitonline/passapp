@@ -275,9 +275,9 @@
                         <div class="tab-pane fade show active" id="manual" role="tabpanel" aria-labelledby="manual-tab">
                             <h4 class="mb-4">คู่มือ</h4>
                             <p class="font-weight-bold">
-                                คู่มือการใช้งาน<br>
+                                ไฟล์เอกสาร<br>
                                 <a target="_blank" href="/manual/{{ $data->manual_file1 }}">{{ $data->manual_file1 }}</a><br>
-                                ลิงก์อื่นๆ<br>
+                                Youtube video.<br>
                                 <iframe width="560" height="315"
                                     src="{{ $data->manual_link }}">
                                 </iframe>
