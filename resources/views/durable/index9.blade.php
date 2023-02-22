@@ -60,6 +60,11 @@
 
                         @foreach ($durable as $data)
                         @php
+
+                        $str_date = new DateTime($data->str_date);
+                        $status4_date = new DateTime($data->status4_date);
+                        $age_diff = date_diff($str_date,$status4_date);
+
                         if ($data->status == 1) {
                             $dstatus = "ใช้งานอยู่";
                             $dcolor = "bg-success-bright text-success";
@@ -99,10 +104,10 @@
                             <td>{{ DateThaiFull($data->str_date) }}</td>
                             <td class="text-right">{{ number_format($data->pass_price,2) }}</td>
                             <td>{{ $data->company }}</td>
-                            <td>{{ $data->str1 }}</td>
+                            <td>{{ $data->money_name }}</td>
                             <td>{{ $data->docno }}</td>
                             <td>{{ $data->dep_name }}</td>
-                            <td class="text-center"></td>
+                            <td class="text-center">{{ $age_diff->format("%y") }}</td>
                             <td>{{ DateThaiFull($data->status4_date) }}</td>
                             <td>
 
