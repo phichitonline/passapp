@@ -47,6 +47,9 @@
                             <th>ประเภท</th>
                             <th>วันที่ได้มา</th>
                             <th class="text-right">ราคา</th>
+                            <th>แหล่งที่ได้มา</th>
+                            <th>แหล่งงบประมาณ</th>
+                            <th>เลขที่เอกสาร</th>
                             <th>ใช้ประจำที่</th>
                             <th>อายุการใช้งาน(ปี)</th>
                             <th>ขอจำหน่าย</th>
@@ -95,8 +98,11 @@
                             <td style='white-space: pre-wrap; word-wrap: break-word;'>{{ $data->type_name_fasgrp }}</td>
                             <td>{{ DateThaiFull($data->str_date) }}</td>
                             <td class="text-right">{{ number_format($data->pass_price,2) }}</td>
+                            <td>{{ $data->company }}</td>
+                            <td>{{ $data->str1 }}</td>
+                            <td>{{ $data->docno }}</td>
                             <td>{{ $data->dep_name }}</td>
-                            <td class="text-center">5</td>
+                            <td class="text-center"></td>
                             <td>{{ DateThaiFull($data->status4_date) }}</td>
                             <td>
 
