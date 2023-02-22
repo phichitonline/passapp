@@ -53,6 +53,7 @@
                             <th>ใช้ประจำที่</th>
                             <th>อายุการใช้งาน(ปี)</th>
                             <th>ขอจำหน่าย</th>
+                            <th>วันที่จำหน่าย</th>
                             <th class="text-center">ปรับปรุง</th>
                         </tr>
                         </thead>
@@ -109,6 +110,7 @@
                             <td>{{ $data->dep_name }}</td>
                             <td class="text-center">{{ $age_diff->format("%y") }}</td>
                             <td>{{ DateThaiFull($data->status4_date) }}</td>
+                            <td>{{ DateThaiFull($data->status9_date) }}</td>
                             <td>
 
                                 <li class="nav-item dropdown">
