@@ -39,16 +39,18 @@
                     {{-- <h4 class="card-title">ผลการค้นหา คำค้น "@if (isset($_GET['keyword'])) {{ $_GET['keyword'] }} @endif"</h4> --}}
                 </div>
                 <div class="table-responsive">
-                    <table id="example1" class="table table-small">
+                    <table id="DataExport" class="table table-small">
                         <thead>
                         <tr>
                             <th>เลขครุภัณฑ์</th>
                             <th>รายการครุภัณฑ์</th>
                             <th>ประเภท</th>
-                            <th>วันที่ได้รับ</th>
-                            {{-- <th class="text-right">มูลค่า</th> --}}
+                            <th>วันที่ได้มา</th>
+                            <th class="text-right">ราคา</th>
                             <th>ใช้ประจำที่</th>
-                            <th class="text-center">วันที่</th>
+                            <th>อายุการใช้งาน(ปี)</th>
+                            <th>ขอจำหน่าย</th>
+                            <th class="text-center">ปรับปรุง</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -89,11 +91,13 @@
                         @endphp
                         <tr>
                             <td><a href="{{ route('search.show', $data->id) }}">{{ $data->pass_number }}</a></td>
-                            <td style='white-space: pre-wrap; word-wrap: break-word;'><a href="{{ route('search.show', $data->id) }}">{{ $data->pass_name }} {{ $data->model }}</a></td>
+                            <td style='white-space: pre-wrap; word-wrap: break-word;'><a href="{{ route('search.show', $data->id) }}">{{ $data->pass_name }} {{ $data->model }} {{ $data->serial_no }}</a></td>
                             <td style='white-space: pre-wrap; word-wrap: break-word;'>{{ $data->type_name_fasgrp }}</td>
                             <td>{{ DateThaiFull($data->str_date) }}</td>
-                            {{-- <td class="text-right">{{ number_format($data->pass_price,2) }}</td> --}}
+                            <td class="text-right">{{ number_format($data->pass_price,2) }}</td>
                             <td>{{ $data->dep_name }}</td>
+                            <td class="text-center">5</td>
+                            <td>{{ DateThaiFull($data->status4_date) }}</td>
                             <td>
 
                                 <li class="nav-item dropdown">
