@@ -275,12 +275,16 @@
                         <div class="tab-pane fade show active" id="manual" role="tabpanel" aria-labelledby="manual-tab">
                             <h4 class="mb-4">คู่มือ</h4>
                             <p class="font-weight-bold">
-                                ไฟล์เอกสาร<br>
-                                <a target="_blank" href="/manual/{{ $data->manual_file1 }}">{{ $data->manual_file1 }}</a><br>
-                                Youtube video.<br>
-                                <iframe src="{{ $data->manual_link }}">
-                                </iframe>
-                                {{-- <a href="{{ $data->manual_link }}" target="_blank" rel="noopener noreferrer">{{ $data->manual_link }}</a> --}}
+
+                                @if ($data->manual_file1 || "")
+                                    ไฟล์เอกสาร<br>
+                                    <a target="_blank" href="/manual/{{ $data->manual_file1 }}">{{ $data->manual_file1 }}</a><br>
+                                @endif
+                                @if ($data->manual_link || "")
+                                    ลิงก์ภายนอก (Youtube/Google Drive ...)<br>
+                                    {{-- <iframe src="{{ $data->manual_link }}"></iframe> --}}
+                                    <a href="{{ $data->manual_link }}" target="_blank" rel="noopener noreferrer">{{ $data->manual_link }}</a>
+                                @endif
                             </p>
 
                         </div>
