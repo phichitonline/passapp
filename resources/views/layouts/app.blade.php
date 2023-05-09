@@ -51,6 +51,8 @@
 
 @yield('head')
 
+@livewireStyles
+
 <!-- App css -->
     <link rel="stylesheet" href="{{ url('assets/css/app.min.css') }}" type="text/css">
 
@@ -663,6 +665,8 @@
 
 <!-- App scripts -->
 <script src="{{ url('assets/js/app.min.js') }}"></script>
+
+@livewireScripts
 
 </body>
 </html>
