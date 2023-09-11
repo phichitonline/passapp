@@ -23,10 +23,10 @@
         </div>
     </div>
 
-    <div>
+    {{-- <div>
         <livewire:test123 />
-        
-    </div>
+
+    </div> --}}
 
     <div class="row">
         <div class="col-lg-4 col-md-12">

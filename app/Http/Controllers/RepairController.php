@@ -68,7 +68,7 @@ class RepairController extends Controller
                                 ->with('unsuccess', 'ครุภัณฑ์นี้ส่งซ่อมแล้วเมื่อ '.$r_date);
             } else if ($r_status == 2) {
                 return redirect()->route('durable.show', $request->durable_id)
-                                ->with('unsuccess', 'ช่างรับซ่อมครุภัณฑ์นี้แล้วเมื่อ '.$r_reciev_date.' อยู่ระหว่างการซ่อม... โปรดติดต่อช่างเพื่อสอบถาม');
+                                ->with('unsuccess', 'ช่างรับซ่อมครุภัณฑ์นี้แล้วเมื่อ '.$r_reciev_date.' อยู่ระหว่างการซ่อม... โปรดติดต่อช่างเพื่อสอบถามข้อมูล');
             } else {
                 Repair::create($request->all());
                 Durable::where('id', $request->durable_id)->update(['status' => 3,'repair_status' => 'ส่งซ่อม '.$request->repair_date]);

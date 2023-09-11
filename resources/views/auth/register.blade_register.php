@@ -1,4 +1,7 @@
 @extends('layouts.app')
+
+@section('bodyClass', 'small-navigation')
+
 @section('title', 'Register |')
 
 @section('content')

@@ -312,6 +312,18 @@
                                     </div>
                                 </div>
                             </fieldset>
+
+                            <div class="form-group row">
+                                <label for="getid" class="col-sm-2 col-form-label text-md-right">วิธีการที่ได้มา</label>
+                                <div class="col-sm-4">
+                                    <select id="getid" name="getid" class="js-example-basic-single">
+                                        @foreach ($typeget as $typeget)
+                                        <option value="{{ $typeget->getid }}" @if ($typeget->getid == $durable->getid) selected @endif>{{ $typeget->get_name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
                             <div class="form-group row">
                                 <label for="docno" class="col-sm-2 col-form-label text-md-right">เลขที่เอกสาร</label>
                                 <div class="col-sm-10">
@@ -428,7 +440,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </form>
 
                     </div>

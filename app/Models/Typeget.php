@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Typestatus extends Model
+class Typeget extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'statusid','status'
+        'getid','get_name'
     ];
 }

@@ -79,10 +79,11 @@ class SearchController extends Controller
      */
     public function show($id)
     {
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp','typegets.get_name')
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('typegets', 'durables.getid', '=', 'typegets.getid')
         ->where('durables.id', $id)
         ->get();
 
@@ -113,10 +114,11 @@ class SearchController extends Controller
 
     public function printpreview(Request $request)
     {
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp','typegets.get_name')
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('typegets', 'durables.getid', '=', 'typegets.getid')
         ->where('durables.id', $_GET['id'])
         ->get();
 
@@ -148,10 +150,11 @@ class SearchController extends Controller
             $statusw2 = "<>";
         }
 
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp','typegets.get_name')
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('typegets', 'durables.getid', '=', 'typegets.getid')
         ->where([
                     ['durables.status',$statusw2,$statusw1],
                     [$wherefield,$keyword]

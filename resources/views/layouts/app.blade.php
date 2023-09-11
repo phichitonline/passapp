@@ -141,94 +141,11 @@
                                             </div>
                                             <div class="flex-grow-1">
                                                 <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    Your report is prepared
+                                                    ข้อมูลการแจ้งเตือน
                                                     <i title="Mark as unread" data-toggle="tooltip"
                                                        class="hide-show-toggler-item fa fa-check font-size-11"></i>
                                                 </p>
                                                 <span class="text-muted small">20 min ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           class="list-group-item bg-primary-bright px-3 d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span
-                                                    class="avatar-title bg-success-bright text-success rounded-circle">
-                                                    <i class="ti-user"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    New customer registered
-                                                    <i title="Mark as read" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-circle-o font-size-11"></i>
-                                                </p>
-                                                <span class="text-muted small">20 min ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           class="list-group-item px-3 d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span
-                                                    class="avatar-title bg-warning-bright text-warning rounded-circle">
-                                                    <i class="ti-package"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    New Order Recieved
-                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                </p>
-                                                <span class="text-muted small">45 sec ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           class="list-group-item px-3 d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span class="avatar-title bg-danger-bright text-danger rounded-circle">
-                                                    <i class="ti-server"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    Server Limit Reached!
-                                                    <i title="Mark as unread" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-check font-size-11"></i>
-                                                </p>
-                                                <span class="text-muted small">55 sec ago</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#"
-                                           class="list-group-item px-3 d-flex align-items-center hide-show-toggler">
-                                            <div>
-                                                <figure class="avatar mr-2">
-                                                <span class="avatar-title bg-info-bright text-info rounded-circle">
-                                                    <i class="ti-layers"></i>
-                                                </span>
-                                                </figure>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <p class="mb-0 line-height-20 d-flex justify-content-between">
-                                                    Apps are ready for update
-                                                    <i title="" data-toggle="tooltip"
-                                                       class="hide-show-toggler-item fa fa-check font-size-11"
-                                                       data-original-title="Mark as unread"></i>
-                                                </p>
-                                                <span class="text-muted small">Yesterday</span>
                                             </div>
                                         </a>
                                     </li>

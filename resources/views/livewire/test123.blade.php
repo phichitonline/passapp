@@ -8,6 +8,4 @@
     <button wire:click="resetCount">Reset</button>
     <br><br>
 
-// create html template
-
 </div>

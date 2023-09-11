@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use File;
+use App\Models\Repair;
 use App\Models\Durable;
-use App\Models\Typefasgrp;
+use App\Models\Typeget;
+use App\Models\Transfer;
 use App\Models\Typemoney;
 use App\Models\Department;
-use App\Models\Transfer;
-use App\Models\Repair;
+use App\Models\Typefasgrp;
+use App\Models\Typestatus;
 use Illuminate\Http\Request;
-use File;
 
 class DurableController extends Controller
 {
@@ -24,10 +26,11 @@ class DurableController extends Controller
      */
     public function index()
     {
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp','typegets.get_name')
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('typegets', 'durables.getid', '=', 'typegets.getid')
         ->where([
                 ['durables.status','<>','9'],
                 ['durables.status','<>','4']
@@ -42,10 +45,11 @@ class DurableController extends Controller
 
     public function index9()
     {
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp','typegets.get_name')
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('typegets', 'durables.getid', '=', 'typegets.getid')
         ->where('durables.status','9')
         ->get();
 
@@ -57,10 +61,11 @@ class DurableController extends Controller
 
     public function index4()
     {
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp','typegets.get_name')
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('typegets', 'durables.getid', '=', 'typegets.getid')
         ->where('durables.status','4')
         ->get();
 
@@ -83,6 +88,8 @@ class DurableController extends Controller
             'department' => Department::all(),
             'typefasgrp' => Typefasgrp::all(),
             'typemoney' => Typemoney::all(),
+            'typeget' => Typeget::all(),
+            'typestatus' => Typestatus::all(),
         ]);
     }
 
@@ -147,10 +154,11 @@ class DurableController extends Controller
      */
     public function show($id)
     {
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp','typegets.get_name')
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('typegets', 'durables.getid', '=', 'typegets.getid')
         ->where('durables.id', $id)
         ->get();
 
@@ -192,6 +200,8 @@ class DurableController extends Controller
             'department' => Department::all(),
             'typefasgrp' => Typefasgrp::all(),
             'typemoney' => Typemoney::all(),
+            'typeget' => Typeget::all(),
+            'typestatus' => Typestatus::all(),
         ],compact('durable'));
     }
 

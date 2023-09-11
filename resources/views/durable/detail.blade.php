@@ -198,6 +198,9 @@
                                 <li><i class="fa fa-check mr-2 @if ($data->money_name == NULL) text-light @else text-success @endif"></i>
                                     แหล่งงบประมาณ : <b>{{ $data->money_name }}</b>
                                 </li>
+                                <li><i class="fa fa-check mr-2 @if ($data->get_name == NULL) text-light @else text-success @endif"></i>
+                                    วิธีการที่ได้มา : <b>{{ $data->get_name }}</b>
+                                </li>
                                 <li><i class="fa fa-check mr-2 @if ($data->docno == NULL) text-light @else text-success @endif"></i>
                                     เลขที่เอกสาร : <b>{{ $data->docno }}</b>
                                 </li>

@@ -1,16 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SettingController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DurableController;
-use App\Http\Controllers\SearchController;
 use App\Http\Controllers\RepairController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\DurableController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\TypegetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\TypefasgrpController;
+use App\Http\Controllers\TypestatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +30,7 @@ use App\Http\Controllers\TypefasgrpController;
 //     return view('welcome');
 // });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -50,14 +53,18 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
     Route::post('/survey', [SurveyController::class, 'index'])->name('survey');
 
+    Route::get('/printpreview', [SearchController::class, 'printpreview'])->name('printpreview');
+    Route::get('/printallpreview', [SearchController::class, 'printallpreview'])->name('printallpreview');
+
     Route::resource('/department', DepartmentController::class);
     Route::resource('/typefasgrp', TypefasgrpController::class);
+    Route::resource('/typestatus', TypestatusController::class);
+    Route::resource('/typeget', TypegetController::class);
+
 });
 
 Route::resource('/search', SearchController::class);
 Route::get('/didsearch', [SearchController::class, 'didsearch'])->name('didsearch');
 Route::get('/durablesearch', [SearchController::class, 'durablesearch'])->name('durablesearch');
-Route::get('/printpreview', [SearchController::class, 'printpreview'])->name('printpreview');
-Route::get('/printallpreview', [SearchController::class, 'printallpreview'])->name('printallpreview');
 
 Auth::routes();
