@@ -358,7 +358,7 @@
                         </li>
                         <li>
                             <a @if(request()->segment(1) == 'report') class="active"
-                               @endif href="#">
+                               @endif href="{{ route('report') }}">
                                 <span class="nav-link-icon" data-feather="file"></span>
                                 <span>รายงาน</span>
                                 {{-- <span class="badge badge-primary">0</span> --}}

@@ -42,6 +42,9 @@
                             <a href="{{ route('durable.edit', $data->id) }}" class="btn btn-outline-warning">
                                 <i class="ti-pencil-alt mr-2"></i> แก้ไข
                             </a>
+                            <a href="{{ route('survey.edit', $data->id) }}" class="btn btn-outline-primary">
+                                <i class="ti-check-box mr-2"></i> สำรวจ
+                            </a>
                     @else
                         <a class="btn btn-outline-warning" data-toggle="modal" data-target="#repairModal">
                             <i class="mr-2" data-feather="tool"></i> แจ้งซ่อม
@@ -273,8 +276,14 @@
                             <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab"
                                aria-controls="contact" aria-selected="false">ประวัติการซ่อม ({{ $repair_count }})</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="survey-tab" data-toggle="tab" href="#survey" role="tab"
+                               aria-controls="survey" aria-selected="false">การสำรวจ ({{ $survey_count }})</a>
+                        </li>
                     </ul>
+
                     <div class="tab-content">
+
                         <div class="tab-pane fade show active" id="manual" role="tabpanel" aria-labelledby="manual-tab">
                             <h4 class="mb-4">คู่มือ</h4>
                             <p class="font-weight-bold">
@@ -307,7 +316,7 @@
                                     <tbody>
                                         @foreach ($transfers as $transfer)
                                         <tr>
-                                            <td>{{ $transfer->created_at }}</td>
+                                            <td>{{ DateThaiFull($transfer->created_at) }}</td>
                                             <td>{{ $transfer->dep_name_old }}</td>
                                             <td>{{ $transfer->dep_name }}</td>
                                             <td>{{ $transfer->username }}</td>
@@ -317,6 +326,7 @@
                                 </table>
                             </div>
                         </div>
+
                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                             <h4 class="mb-4">ประวัติการซ่อม</h4>
                             <div class="table-responsive">
@@ -336,7 +346,7 @@
                                     <tbody>
                                         @foreach ($repairs as $repair)
                                         <tr>
-                                            <td>{{ $repair->repair_date }}</td>
+                                            <td>{{ DateThaiFull($repair->repair_date) }}</td>
                                             <td>{{ $repair->repair_text }}</td>
                                             <td>{{ $repair->repair_user }}</td>
                                             <td>{{ $repair->repair_reciev_date }}</td>
@@ -350,6 +360,31 @@
                                 </table>
                             </div>
                         </div>
+
+                        <div class="tab-pane fade" id="survey" role="tabpanel" aria-labelledby="survey-tab">
+                            <h4 class="mb-4">การสำรวจ</h4>
+                            <div class="table-responsive">
+                                <table id="example3" class="table table-small">
+                                    <thead>
+                                    <tr>
+                                        <th>วันที่สำรวจ</th>
+                                        <th>ผู้สำรวจ</th>
+                                        <th>หมายเหตุ</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($surveys as $survey)
+                                        <tr>
+                                            <td>{{ DateThaiFull($survey->created_at) }}</td>
+                                            <td>{{ $survey->username }}</td>
+                                            <td>{{ $survey->memo_survey }}</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

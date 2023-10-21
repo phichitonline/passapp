@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Repair;
+use App\Models\Survey;
 use App\Models\Durable;
 use App\Models\Transfer;
-use App\Models\Repair;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -102,6 +103,13 @@ class SearchController extends Controller
         ->get();
         $repair_count = Repair::where('durable_id', $id)->count();
 
+        $surveys = Survey::select('surveys.*', 'users.name AS username')
+        ->leftJoin('users', 'surveys.userid', '=', 'users.id')
+        ->where('surveys.durableid', $id)
+        ->orderby('surveys.id', 'desc')
+        ->get();
+        $survey_count = Survey::where('durableid', $id)->count();
+
         return view('durable.detail', [
             'pagename' => "ข้อมูลครุภัณฑ์",
             'durable' => $durable,
@@ -109,6 +117,8 @@ class SearchController extends Controller
             'tranfer_count' => $tranfer_count,
             'repairs' => $repairs,
             'repair_count' => $repair_count,
+            'surveys' => $surveys,
+            'survey_count' => $survey_count,
         ]);
     }
 

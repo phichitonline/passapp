@@ -12,6 +12,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\TypegetController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\TypefasgrpController;
 use App\Http\Controllers\TypestatusController;
 
@@ -49,9 +50,10 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/durable4', [DurableController::class, 'index4'])->name('durable.index4');
 
     Route::resource('/repair', RepairController::class);
-    Route::get('/report', [ReportController::class, 'index'])->name('report');
+    Route::resource('/survey', SurveyController::class);
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
     Route::post('/survey', [SurveyController::class, 'index'])->name('survey');
+
 
     Route::get('/printpreview', [SearchController::class, 'printpreview'])->name('printpreview');
     Route::get('/printallpreview', [SearchController::class, 'printallpreview'])->name('printallpreview');
@@ -61,10 +63,17 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::resource('/typestatus', TypestatusController::class);
     Route::resource('/typeget', TypegetController::class);
 
+    Route::prefix('report')->group(function () {
+        Route::get('/', [ReportController::class, 'index'])->name('report');
+        Route::post('/', [ReportController::class, 'index'])->name('report');
+        Route::get('/registration', [ReportController::class, 'registration'])->name('report.registration');
+    });
+
 });
 
 Route::resource('/search', SearchController::class);
 Route::get('/didsearch', [SearchController::class, 'didsearch'])->name('didsearch');
 Route::get('/durablesearch', [SearchController::class, 'durablesearch'])->name('durablesearch');
+
 
 Auth::routes();
