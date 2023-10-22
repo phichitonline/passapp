@@ -9,6 +9,7 @@ use App\Models\Typeget;
 use App\Models\Transfer;
 use App\Models\Typemoney;
 use App\Models\Department;
+use App\Models\Durable_log;
 use App\Models\Survey;
 use App\Models\Typefasgrp;
 use App\Models\Typestatus;
@@ -141,6 +142,10 @@ class DurableController extends Controller
         }
 
         Durable::create($request->all());
+
+        $request->merge(['durableid' => $request->pass_number]);
+        $request->merge(['method' => "Create"]);
+        Durable_log::create($request->all());
 
         return redirect()->route('durable.index')
                          ->with('success', 'เพิ่มข้อมูลเรียบร้อยแล้ว');
@@ -282,8 +287,10 @@ class DurableController extends Controller
             Transfer::create($request->all());
         }
 
-
         $durable->update($request->all());
+
+        $request->merge(['method' => "Edit"]);
+        Durable_log::create($request->all());
 
         // return redirect()->route('durable.show', $request->id)
         return redirect()->route('durable.index')

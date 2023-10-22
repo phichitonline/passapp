@@ -143,6 +143,7 @@
                                 <label for="pass_number" class="col-sm-2 col-form-label text-md-right">เลขครุภัณฑ์</label>
                                 <div class="col-sm-4">
                                     <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
+                                    <input type="hidden" name="userid" value="{{ Auth::user()->id }}">
                                     <input type="text" class="form-control" id="pass_number" name="pass_number" placeholder="เลขครุภัณฑ์" value="{{ old('pass_number') }}">
                                     @error('pass_number')
                                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>

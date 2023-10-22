@@ -10,6 +10,7 @@ use App\Models\Typeget;
 use App\Models\Transfer;
 use App\Models\Typemoney;
 use App\Models\Department;
+use App\Models\Durable_log;
 use App\Models\Typefasgrp;
 use App\Models\Typestatus;
 use Illuminate\Http\Request;
@@ -225,6 +226,9 @@ class SurveyController extends Controller
         }
 
         Survey::create($request->all());
+
+        $request->merge(['method' => "Survey"]);
+        Durable_log::create($request->all());
 
         Durable::where('id', $request->id)
         ->update([
