@@ -225,7 +225,29 @@ class SurveyController extends Controller
             Transfer::create($request->all());
         }
 
+        switch ($request->status) {
+            case 1:
+                $durable_status = " (ยังใช้งานอยู่)";
+                break;
+            case 2:
+                $durable_status = " (ระหว่างการสำรวจ)";
+                break;
+            case 3:
+                $durable_status = " (ชำรุด)";
+                break;
+            case 4:
+                $durable_status = " (ขอจำหน่าย)";
+                break;
+            case 9:
+                $durable_status = " (จำหน่ายแล้ว)";
+                break;
+            default:
+                $durable_status = "";
+        }
+
+        $request->merge(['memo_survey' => $request->memo_survey.$durable_status]);
         Survey::create($request->all());
+
 
         $request->merge(['method' => "Survey"]);
         Durable_log::create($request->all());
