@@ -170,7 +170,25 @@
                             <td>{{ $data->life }}</td>
                             <td>{{ $data->dep_name }}</td>
                             <td>{{ $data->docno }} {{ $data->memo_text }}</td>
-                            <td><span class="badge {{ $dcolor }}">{{ $dstatus }}</span></td>
+                            {{-- <td><span class="badge {{ $dcolor }}">{{ $dstatus }}</span></td> --}}
+                            <td>
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="badge {{ $dcolor }} nav-link dropdown-toggle" data-toggle="dropdown">
+                                        {{ $dstatus }}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        @guest
+                                        <a href="{{ route('search.show', $data->id) }}" class="dropdown-item">ข้อมูล</a>
+                                        @else
+                                            <a href="{{ route('durable.show', $data->id) }}" class="dropdown-item">ข้อมูล</a>
+                                            @if (Auth::user()->isadmin == "0")
+                                            <a target = "_blank" href="{{ route('survey.edit', $data->id) }}" class="dropdown-item">สำรวจ</a>
+                                            @endif
+                                        @endif
+                                    </div>
+                                </li>
+                            </td>
+
                         </tr>
                         @endforeach
 
