@@ -160,7 +160,10 @@
                         }
                         @endphp
                         <tr>
-                            <td><a href="{{ route('search.show', $data->id) }}">{{ $data->pass_number }}</a></td>
+                            <td>
+                                <i class="fa fa-check mr-2 @if ($data->created_at == NULL) text-light @else text-success @endif"></i>
+                                <a href="{{ route('search.show', $data->id) }}">{{ $data->pass_number }}</a>
+                            </td>
                             <td style='white-space: pre-wrap; word-wrap: break-word;'><a href="{{ route('search.show', $data->id) }}">{{ $data->pass_name }} {{ $data->model }}</a></td>
                             <td style='white-space: pre-wrap; word-wrap: break-word;'>{{ $data->type_name_fasgrp }}</td>
                             <td>{{ DateThaiFull($data->str_date) }}</td>

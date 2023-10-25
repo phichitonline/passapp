@@ -10,10 +10,11 @@ use App\Models\Typeget;
 use App\Models\Transfer;
 use App\Models\Typemoney;
 use App\Models\Department;
-use App\Models\Durable_log;
 use App\Models\Typefasgrp;
 use App\Models\Typestatus;
+use App\Models\Durable_log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SurveyController extends Controller
 {
@@ -48,14 +49,21 @@ class SurveyController extends Controller
             $statusw2 = "<>";
         }
 
-        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name','typefasgrps.type_name_fasgrp')
+        $durable = Durable::select('durables.*', 'departments.dep_name','typemoneys.money_name'
+        ,'typefasgrps.type_name_fasgrp','surveys.created_at'
+        , DB::raw('COUNT(*) as count'))
         ->leftJoin('departments', 'durables.depcode', '=', 'departments.depcode')
         ->leftJoin('typemoneys', 'durables.str1', '=', 'typemoneys.id')
         ->leftJoin('typefasgrps', 'durables.fasgrp', '=', 'typefasgrps.id')
+        ->leftJoin('surveys', function($join){
+            $join->on('durables.id', '=', 'surveys.durableid')
+            ->where('surveys.created_at', '>', '2023-09-30 00:00:00');
+        })
         ->where([
                     ['durables.status',$statusw2,$statusw1],
                     [$wherefield,$keyword]
                 ])
+        ->groupBy('durables.id')
         ->get();
 
         return view('survey.index', [
