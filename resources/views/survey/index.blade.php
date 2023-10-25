@@ -113,8 +113,14 @@
                             <th>รายการครุภัณฑ์</th>
                             <th>ประเภท</th>
                             <th>วันที่ได้รับ</th>
+                            <th>ราคา</th>
+                            <th>วิธีการได้มา</th>
+                            <th>แหล่งที่มา</th>
+                            <th>อายุการใช้งาน(ปี)</th>
                             <th>ใช้ประจำที่</th>
+                            <th>หมายเหตุ</th>
                             <th>สถานะ</th>
+                        </tr>
                         </tr>
                         </thead>
                         <tbody>
@@ -158,7 +164,12 @@
                             <td style='white-space: pre-wrap; word-wrap: break-word;'><a href="{{ route('search.show', $data->id) }}">{{ $data->pass_name }} {{ $data->model }}</a></td>
                             <td style='white-space: pre-wrap; word-wrap: break-word;'>{{ $data->type_name_fasgrp }}</td>
                             <td>{{ DateThaiFull($data->str_date) }}</td>
+                            <td>{{ $data->pass_price }}</td>
+                            <td>{{ $data->money_name }}</td>
+                            <td>{{ $data->company }}</td>
+                            <td>{{ $data->life }}</td>
                             <td>{{ $data->dep_name }}</td>
+                            <td>{{ $data->docno }} {{ $data->memo_text }}</td>
                             <td><span class="badge {{ $dcolor }}">{{ $dstatus }}</span></td>
                         </tr>
                         @endforeach
