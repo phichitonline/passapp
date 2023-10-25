@@ -161,7 +161,11 @@
                         @endphp
                         <tr>
                             <td>
-                                <i class="fa fa-check mr-2 @if ($data->created_at == NULL) text-light @else text-success @endif"></i>
+                                @if ($data->created_at == NULL)
+                                    <i class="fa fa-check mr-2 text-light"></i>
+                                @else
+                                    <i title="สำรวจเมื่อ : {{ DateThaiFull($data->created_at) }}" data-toggle="tooltip" class="fa fa-check mr-2 text-success"></i>
+                                @endif
                                 <a href="{{ route('search.show', $data->id) }}">{{ $data->pass_number }}</a>
                             </td>
                             <td style='white-space: pre-wrap; word-wrap: break-word;'><a href="{{ route('search.show', $data->id) }}">{{ $data->pass_name }} {{ $data->model }}</a></td>
