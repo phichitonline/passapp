@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('bodyClass', 'small-navigation')
-@section('title', 'รายการส่งซ่อม |')
+@section('title', '{{ $pagename }} |')
 
 @section('head')
     <!-- DataTable -->

@@ -42,7 +42,7 @@
                             <a href="{{ route('durable.edit', $data->id) }}" class="btn btn-outline-warning">
                                 <i class="ti-pencil-alt mr-2"></i> แก้ไข
                             </a>
-                            <a href="{{ route('survey.edit', $data->id) }}" class="btn btn-outline-primary">
+                            <a href="{{ route('survey.edit', $data->id) }}" class="btn btn-outline-secondary">
                                 <i class="ti-check-box mr-2"></i> สำรวจ
                             </a>
                     @else

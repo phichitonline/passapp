@@ -416,7 +416,7 @@
                                 <span class="badge badge-warning text-white">{{ $repair_status1 }}</span>
                             </a>
                             <a @if(request()->segment(1) == 'repairing') class="active"
-                                @endif href="#">
+                                @endif href="{{ route('repairing') }}">
                                 <span class="nav-link-icon" data-feather="tool"></span>
                                 <span>รับซ่อมกำลังดำเนินการ</span>
                                 <span class="badge badge-primary">{{ $repair_status2 }}</span>

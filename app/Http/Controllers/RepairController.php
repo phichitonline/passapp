@@ -22,13 +22,29 @@ class RepairController extends Controller
     {
         $repairs = Repair::select('repairs.*','durables.image_filename')
         ->leftJoin('durables', 'repairs.durable_id', '=', 'durables.id')
-        // ->where('repairs.repair_status', 1)
+        ->where('repairs.repair_status', 1)
         ->orderby('repairs.id', 'desc')
         ->get();
         $repair_count = Repair::where('repair_status', 1)->count();
 
         return view('repair.index', [
             'pagename' => "รายการส่งซ่อม",
+            'repairs' => $repairs,
+            'repair_count' => $repair_count,
+        ]);
+    }
+
+    public function repairing()
+    {
+        $repairs = Repair::select('repairs.*','durables.image_filename')
+        ->leftJoin('durables', 'repairs.durable_id', '=', 'durables.id')
+        ->where('repairs.repair_status', 2)
+        ->orderby('repairs.id', 'desc')
+        ->get();
+        $repair_count = Repair::where('repair_status', 2)->count();
+
+        return view('repair.index', [
+            'pagename' => "รับซ่อมกำลังดำเนินการ",
             'repairs' => $repairs,
             'repair_count' => $repair_count,
         ]);

@@ -26,21 +26,21 @@
                         <i class="ti-printer mr-2"></i> พิมพ์
                     </a>
                 @else
-                    @if ($data->durable_id > "99999999")
-                    @else
+                    {{-- @if ($data->durable_id > "99999999") --}}
+                    {{-- @else --}}
                     <a href="{{ route('durable.show', $data->durable_id) }}" class="btn btn-outline-info">
                         <i class="ti-alert mr-2"></i> ดูประวัติครุภัณฑ์
                     </a>
-                    @endif
-                    
+                    {{-- @endif --}}
+
                     @if (Auth::user()->isadmin <= "1" OR Auth::user()->isadmin == "4")
                             @if ($data->repair_reciev_date == NULL)
                                 <a class="btn btn-outline-warning" onclick="successConfirm()">
                                     <i class="mr-2" data-feather="tool"></i> ช่างรับซ่อม
                                 </a>
                             @else
-                                <a class="btn btn-warning text-white">
-                                    <i class="mr-2" data-feather="tool"></i> ช่างรับแล้ว
+                                <a href="{{ route('durable.show', $data->durable_id) }}" class="btn btn-outline-success">
+                                    <i class="mr-2" data-feather="tool"></i> บันทึกการซ่อม
                                 </a>
                             @endif
 
@@ -221,6 +221,18 @@
                     <input type="hidden" name="repair_reciev_user" value="{{ Auth::user()->name }}">
                 </div>
             </form>
+
+            <form id="confirmFinishForm" class="form form-horizontal" action="{{ route('repairing') }}" method="GET" enctype="multipart/form-data" id="upload-image">
+                @csrf
+                {{-- @method('PUT')
+                <div class="modal-body">
+                    <input type="hidden" name="repairid" value="{{ $repairid }}">
+                    <input type="hidden" name="durable_id" value="{{ $data->durable_id }}">
+                    <input type="hidden" name="repair_status" value="2">
+                    <input type="hidden" name="repair_reciev_date" value="{{ date("Y-m-d H:i:s") }}">
+                    <input type="hidden" name="repair_reciev_user" value="{{ Auth::user()->name }}">
+                </div> --}}
+            </form>
 @endforeach
 
         </div>
@@ -261,6 +273,25 @@
                     // swal("คุณเปลี่ยนใจ! ข้อมูลผู้ใช้นี้ยังคงอยู่", {
                     //     icon: "success",
                     // });
+                }
+            });
+
+        });
+        }
+
+        function finishConfirm() {
+            $(document).ready(function(){
+            swal({
+            title: "บันทึกรายละเอียดการซ่อม",
+            text: "เมื่อบันทึกแล้ว รายการนี้จะถูกเปลี่ยนสถานะเป็นพร้อมใช้งาน!",
+            icon: "success",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    document.getElementById("confirmFinishForm").submit();
+                } else {
                 }
             });
 

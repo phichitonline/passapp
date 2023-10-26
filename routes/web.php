@@ -50,6 +50,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/durable4', [DurableController::class, 'index4'])->name('durable.index4');
 
     Route::resource('/repair', RepairController::class);
+    Route::get('/repairing', [RepairController::class, 'repairing'])->name('repairing');
+
     Route::resource('/survey', SurveyController::class);
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');
     Route::post('/survey', [SurveyController::class, 'index'])->name('survey');
