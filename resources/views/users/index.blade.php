@@ -18,7 +18,7 @@
         <h3>{{ $pagename }}</h3>
         @guest
         @else
-            @if (Auth::user()->isadmin == "0")
+            @if (Auth::user()->isadmin <= "1")
             <a href="{{ route('user.create') }}" class="btn btn-outline-primary">
                 <i class="ti-plus mr-2"></i> เพิ่มผู้ใช้ใหม่
             </a>

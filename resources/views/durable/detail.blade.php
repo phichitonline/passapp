@@ -29,7 +29,7 @@
                         <i class="ti-printer mr-2"></i> พิมพ์
                     </a>
                 @else
-                    @if (Auth::user()->isadmin <= "1")
+                    @if (Auth::user()->isadmin <= "2")
                             <a target="_blank" href="/printpreview/?id={{ $data->id }}" class="btn btn-outline-info">
                                 <i class="ti-printer mr-2"></i> พิมพ์ Sticker
                             </a>
