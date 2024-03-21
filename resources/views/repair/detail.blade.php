@@ -39,7 +39,7 @@
                                     <i class="mr-2" data-feather="tool"></i> ช่างรับซ่อม
                                 </a>
                             @else
-                                <a href="{{ route('durable.show', $data->durable_id) }}" class="btn btn-outline-success">
+                                <a class="btn btn-outline-success" data-toggle="modal" data-target="#repairingModal">
                                     <i class="mr-2" data-feather="tool"></i> บันทึกการซ่อม
                                 </a>
                             @endif
@@ -222,19 +222,59 @@
                 </div>
             </form>
 
-            <form id="confirmFinishForm" class="form form-horizontal" action="{{ route('repairing') }}" method="GET" enctype="multipart/form-data" id="upload-image">
+            {{-- <form id="confirmFinishForm" class="form form-horizontal" action="{{ route('repairing') }}" method="GET" enctype="multipart/form-data" id="upload-image">
                 @csrf
-                {{-- @method('PUT')
+                @method('PUT')
                 <div class="modal-body">
                     <input type="hidden" name="repairid" value="{{ $repairid }}">
                     <input type="hidden" name="durable_id" value="{{ $data->durable_id }}">
-                    <input type="hidden" name="repair_status" value="2">
+                    <input type="hidden" name="repair_status" value="3">
                     <input type="hidden" name="repair_reciev_date" value="{{ date("Y-m-d H:i:s") }}">
                     <input type="hidden" name="repair_reciev_user" value="{{ Auth::user()->name }}">
-                </div> --}}
-            </form>
+                </div>
+            </form> --}}
 @endforeach
 
+        </div>
+    </div>
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="repairingModal">
+        <div class="modal-dialog" role="document" aria-hidden="true">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">บันทึกการซ่อม</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="ปิด">
+                <i class="ti-close"></i>
+              </button>
+            </div>
+            <form class="form form-horizontal" action="{{ route('repairfinish') }}" method="POST" enctype="multipart/form-data" id="upload-image">
+                @csrf
+                @method('PUT')
+                <div class="modal-body">
+                    {{-- <h3>@foreach ($durable as $data) {{ $data->pass_number }} @endforeach</h3> --}}
+                    {{-- <p>@foreach ($durable as $data) {{ $data->pass_name }} {{ $data->model }} @endforeach</p> --}}
+                    <p>ช่างผู้ซ่อม:
+                        <input type="hidden" name="pass_number" value="{{ $data->pass_number }}">
+                        <input type="hidden" name="repairid" value="{{ $repairid }}">
+                        <input type="hidden" name="durable_id" value="{{ $data->durable_id }}">
+                        <input type="hidden" name="repair_status" value="3">
+                        <input type="hidden" name="repair_finish_date" value="{{ date("Y-m-d H:i:s") }}">
+                        <input type="hidden" name="repair_finish_user" value="{{ Auth::user()->name }}">
+                    </p>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">รายละเอียดการซ่อม:</label>
+                        <textarea class="form-control" id="repair_finish_text" name="repair_finish_text" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="col-form-label">มูลค่าการซ่อม:</label>
+                        <input type="number" step="any" class="form-control" id="repair_price" name="repair_price">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+                        <button type="submit" class="btn btn-primary">บันทึกการซ่อม</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 

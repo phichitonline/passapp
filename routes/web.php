@@ -51,6 +51,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::resource('/repair', RepairController::class);
     Route::get('/repairing', [RepairController::class, 'repairing'])->name('repairing');
+    Route::put('/repairfinish', [RepairController::class, 'repairfinish'])->name('repairfinish');
 
     Route::resource('/survey', SurveyController::class);
     Route::get('/survey', [SurveyController::class, 'index'])->name('survey');

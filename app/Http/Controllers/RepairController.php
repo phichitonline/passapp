@@ -50,6 +50,28 @@ class RepairController extends Controller
         ]);
     }
 
+    public function repairfinish(Request $request)
+    {
+        Repair::where('id', $request->repairid)
+            ->update([
+                'repair_finish_date' => $request->repair_finish_date,
+                'repair_finish_user' => $request->repair_finish_user,
+                'repair_status' => $request->repair_status,
+                'repair_finish_text' => $request->repair_finish_text,
+                'repair_price' => $request->repair_price,
+            ]);
+
+        Durable::where('id', $request->durable_id)
+            ->update([
+                'repair_status' => 'ซ่อมเสร็จแล้ว '.$request->repair_finish_date,
+                'status' => 1,
+            ]);
+
+        return redirect()->route('repairing')
+        ->with('repairsuccess', ''.$request->pass_number.' ซ่อมเสร็จเรียบร้อยแล้ว, ผู้ซ่อม: '.$request->user_name.' ... '.env('APP_URL').'/search/'.$request->durable_id);
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -102,7 +124,7 @@ class RepairController extends Controller
             Repair::create($request->all());
             Durable::where('id', $request->durable_id)->update(['status' => 3,'repair_status' => 'ส่งซ่อม '.$request->repair_date]);
             return redirect()->route('search.show', $request->durable_id)
-                            ->with('repairsuccess', 'แจ้งซ่อม: '.$request->pass_number.', สาเหตุ: '.$request->repair_text.', ผู้ส่งซ่อม: '.$request->user_name.' ... '.env('APP_URL').'/repair/');
+                            ->with('repairsuccess', 'แจ้งซ่อม: '.$request->durable_desc.', สาเหตุ: '.$request->repair_text.', ผู้ส่งซ่อม: '.$request->user_name.' ... '.env('APP_URL').'/repair/');
         }
     }
 

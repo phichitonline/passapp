@@ -340,6 +340,7 @@
                                         <th>ช่างรับงาน</th>
                                         <th>วันที่ซ่อมเสร็จ</th>
                                         <th>ช่างรายงาน</th>
+                                        <th>ข้อมูลการซ่อม</th>
                                         <th>มูลค่าการซ่อม</th>
                                     </tr>
                                     </thead>
@@ -353,6 +354,7 @@
                                             <td>{{ $repair->repair_reciev_user }}</td>
                                             <td>{{ $repair->repair_finish_date }}</td>
                                             <td>{{ $repair->repair_finish_user }}</td>
+                                            <td>{{ $repair->repair_finish_text }}</td>
                                             <td>{{ $repair->repair_price }}</td>
                                         </tr>
                                         @endforeach
