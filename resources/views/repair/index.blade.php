@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('bodyClass', 'small-navigation')
-@section('title', '{{ $pagename }} |')
+@section('title', 'ข้อมูลการซ่อม |')
 
 @section('head')
     <!-- DataTable -->
@@ -28,6 +28,17 @@
     @if ($message = Session::get('deletesuccess'))
     <div class="alert alert-danger d-flex align-items-center" role="alert">
         <i class="ti-check mr-2"></i> {{ $message }}
+    </div>
+    @endif
+
+    @if ($message = Session::get('repairfinish'))
+    <div class="alert alert-success alert-with-border d-flex align-items-center" role="alert">
+        <i class="ti-check mr-2"></i> {{ $message }}
+        @foreach ($setting as $data)
+            @if ($data->module5 == 1)
+                {{ linemessage($data->linetoken,$message) }}
+            @endif
+        @endforeach
     </div>
     @endif
 

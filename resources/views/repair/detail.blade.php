@@ -216,23 +216,13 @@
                 <div class="modal-body">
                     <input type="hidden" name="repairid" value="{{ $repairid }}">
                     <input type="hidden" name="durable_id" value="{{ $data->durable_id }}">
+                    <input type="hidden" name="durable_desc" value="{{ $data->durable_desc }}">
                     <input type="hidden" name="repair_status" value="2">
                     <input type="hidden" name="repair_reciev_date" value="{{ date("Y-m-d H:i:s") }}">
                     <input type="hidden" name="repair_reciev_user" value="{{ Auth::user()->name }}">
                 </div>
             </form>
 
-            {{-- <form id="confirmFinishForm" class="form form-horizontal" action="{{ route('repairing') }}" method="GET" enctype="multipart/form-data" id="upload-image">
-                @csrf
-                @method('PUT')
-                <div class="modal-body">
-                    <input type="hidden" name="repairid" value="{{ $repairid }}">
-                    <input type="hidden" name="durable_id" value="{{ $data->durable_id }}">
-                    <input type="hidden" name="repair_status" value="3">
-                    <input type="hidden" name="repair_reciev_date" value="{{ date("Y-m-d H:i:s") }}">
-                    <input type="hidden" name="repair_reciev_user" value="{{ Auth::user()->name }}">
-                </div>
-            </form> --}}
 @endforeach
 
         </div>
@@ -254,9 +244,9 @@
                     {{-- <h3>@foreach ($durable as $data) {{ $data->pass_number }} @endforeach</h3> --}}
                     {{-- <p>@foreach ($durable as $data) {{ $data->pass_name }} {{ $data->model }} @endforeach</p> --}}
                     <p>ช่างผู้ซ่อม:
-                        <input type="hidden" name="pass_number" value="{{ $data->pass_number }}">
                         <input type="hidden" name="repairid" value="{{ $repairid }}">
                         <input type="hidden" name="durable_id" value="{{ $data->durable_id }}">
+                        <input type="hidden" name="durable_desc" value="{{ $data->durable_desc }}">
                         <input type="hidden" name="repair_status" value="3">
                         <input type="hidden" name="repair_finish_date" value="{{ date("Y-m-d H:i:s") }}">
                         <input type="hidden" name="repair_finish_user" value="{{ Auth::user()->name }}">

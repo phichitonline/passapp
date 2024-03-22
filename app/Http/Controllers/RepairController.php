@@ -68,7 +68,7 @@ class RepairController extends Controller
             ]);
 
         return redirect()->route('repairing')
-        ->with('repairsuccess', ''.$request->pass_number.' ซ่อมเสร็จเรียบร้อยแล้ว, ผู้ซ่อม: '.$request->user_name.' ... '.env('APP_URL').'/search/'.$request->durable_id);
+        ->with('repairfinish', ''.$request->pass_number.' ซ่อมเสร็จเรียบร้อยแล้ว, ผู้ซ่อม: '.$request->repair_finish_user.' -> '.env('APP_URL').'/search/'.$request->durable_id);
 
     }
 
@@ -111,7 +111,7 @@ class RepairController extends Controller
                 Repair::create($request->all());
                 Durable::where('id', $request->durable_id)->update(['status' => 3,'repair_status' => 'ส่งซ่อม '.$request->repair_date]);
                 return redirect()->route('durable.show', $request->durable_id)
-                                ->with('success', 'แจ้งซ่อมเรียบร้อยแล้ว');
+                        ->with('success', 'แจ้งซ่อม: '.$request->durable_desc.', สาเหตุ: '.$request->repair_text.', ผู้ส่งซ่อม: '.$request->user_name.' ... '.env('APP_URL').'/repair/');
             }
         } else {
             if (isset($request->image)) {
@@ -123,8 +123,9 @@ class RepairController extends Controller
             }
             Repair::create($request->all());
             Durable::where('id', $request->durable_id)->update(['status' => 3,'repair_status' => 'ส่งซ่อม '.$request->repair_date]);
+
             return redirect()->route('search.show', $request->durable_id)
-                            ->with('repairsuccess', 'แจ้งซ่อม: '.$request->durable_desc.', สาเหตุ: '.$request->repair_text.', ผู้ส่งซ่อม: '.$request->user_name.' ... '.env('APP_URL').'/repair/');
+                    ->with('success', 'แจ้งซ่อม: '.$request->durable_desc.', สาเหตุ: '.$request->repair_text.', ผู้ส่งซ่อม: '.$request->user_name.' ... '.env('APP_URL').'/repair/');
         }
     }
 
@@ -195,7 +196,9 @@ class RepairController extends Controller
                 'repair_status' => 'ช่างรับซ่อม '.$request->repair_reciev_date,
             ]);
 
-        return redirect()->route('repair.index')->with('success','คุณรับงานซ่อมเรียบร้อยแล้ว');
+        return redirect()->route('repair.index')
+        ->with('success', 'คุณรับงานซ่อมเรียบร้อยแล้ว -> '.$request->durable_desc.'');
+
     }
 
     /**
